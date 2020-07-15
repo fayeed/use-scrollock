@@ -10,6 +10,9 @@
     "react-scripts": "^3.0.1",
     "use-scrollock": "file:.."
   },
+  "devDependencies": {
+    "@types/react-dom": "^16.9.8"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

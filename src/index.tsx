@@ -4,7 +4,7 @@ interface UseScrollockProps {
   disableHorizontalScroll?: boolean;
   disableVerticalScroll?: boolean;
   padScrollbarSpace?: boolean;
-  ref?: MutableRefObject<HTMLElement | undefined>;
+  ref?: MutableRefObject<any>;
 }
 
 interface UseScrollockReturntype {
@@ -13,7 +13,7 @@ interface UseScrollockReturntype {
 }
 
 export const useScrollock = (
-  options: UseScrollockProps
+  options?: UseScrollockProps
 ): UseScrollockReturntype => {
   const {
     ref,
