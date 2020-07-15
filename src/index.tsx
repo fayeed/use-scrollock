@@ -52,6 +52,15 @@ export const useScrollock = (
       body.removeEventListener("touchmove", disableTouch);
       body.removeEventListener("scroll", disableScroll);
     }
+
+    return () => {
+      body.style.paddingRight = "0px";
+      body.style.overflowY = "auto";
+      body.style.overflowX = "auto";
+
+      body.removeEventListener("touchmove", disableTouch);
+      body.removeEventListener("scroll", disableScroll);
+    };
   }, [scrollock]);
 
   return { scrollock, toggleScrollock };
