@@ -1,15 +1,22 @@
 import React, { useRef } from "react";
 
 import { useScrollock } from "use-scrollock";
+import GithubIcon from "./github";
 
 const App = () => {
   const ref = useRef(null);
   const { scrollock, toggleScrollock } = useScrollock();
-
   const textAreaLock = useScrollock({ ref });
+
   return (
     <div className={["container", scrollock && "container-unlock"].join(" ")}>
-      <h1>use-scrollock</h1>
+      <div className="row">
+        <h1>use-scrollock</h1>
+        <a href="https://github.com/fayeed/use-scrollock" target="_blank">
+          <GithubIcon height={36} width={36} />
+        </a>
+      </div>
+
       <p>
         Add scroll lock to <code>{"<body />"}</code> tag or any element you
         like.
