@@ -1,16 +1,5 @@
-import { useEffect, useRef, useState, MutableRefObject } from "react";
-
-interface UseScrollockProps {
-  disableHorizontalScroll?: boolean;
-  disableVerticalScroll?: boolean;
-  padScrollbarSpace?: boolean;
-  ref?: MutableRefObject<any>;
-}
-
-interface UseScrollockReturntype {
-  scrollock: boolean;
-  toggleScrollock: (value?: boolean) => void;
-}
+import { useEffect, useRef, useState, useCallback } from "react";
+import { UseScrollockProps, UseScrollockReturntype } from "./types";
 
 export const useScrollock = (
   options?: UseScrollockProps
@@ -28,11 +17,25 @@ export const useScrollock = (
   const toggleScrollock = (value?: boolean) =>
     setScrollock(value ? value : !scrollock);
 
+  // checks if the ref was provided or not & set it or just assign body.
   useEffect(() => {
     innerRef.current = ref?.current
       ? ref?.current
       : document.getElementsByTagName("body")![0];
   }, [ref]);
+
+  const disableScroll = useCallback((e: Event) => {
+    e.preventDefault();
+    return false;
+  }, []);
+
+  const disableTouch = useCallback((e: TouchEvent) => {
+    // checks if the user is using 2 or more fingers, ex. to perform pintch to zoom.
+    if (e.touches.length) return true;
+
+    e.preventDefault();
+    return false;
+  }, []);
 
   useEffect(() => {
     let body = innerRef.current!;
@@ -66,13 +69,4 @@ export const useScrollock = (
   return { scrollock, toggleScrollock };
 };
 
-const disableScroll = (e: Event) => {
-  e.preventDefault();
-  return false;
-};
-
-const disableTouch = (e: TouchEvent) => {
-  if (e.touches.length) return true;
-  e.preventDefault();
-  return false;
-};
+export default useScrollock;
