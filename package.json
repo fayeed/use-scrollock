@@ -1,6 +1,6 @@
 {
   "name": "use-scrollock",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Locks/ Unlock scroll for <body /> or other component.",
   "author": "fayeed",
   "license": "MIT",

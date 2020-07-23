@@ -16,15 +16,13 @@ export const useScrollock = (
 
   const toggleScrollock = useCallback(
     (value?: boolean) => setScrollock(value ? value : !scrollock),
-    []
+    [scrollock]
   );
 
   // checks if the ref was provided or not & set it or just assign body.
   useEffect(() => {
-    innerRef.current = ref?.current
-      ? ref?.current
-      : document.getElementsByTagName("body")![0];
-  }, [ref]);
+    innerRef.current = ref?.current ? ref?.current : document.body;
+  }, [ref?.current]);
 
   const disableScroll = useCallback((e: Event) => {
     e.preventDefault();
