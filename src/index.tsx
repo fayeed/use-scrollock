@@ -14,8 +14,10 @@ export const useScrollock = (
 
   let innerRef = useRef<HTMLElement>();
 
-  const toggleScrollock = (value?: boolean) =>
-    setScrollock(value ? value : !scrollock);
+  const toggleScrollock = useCallback(
+    (value?: boolean) => setScrollock(value ? value : !scrollock),
+    []
+  );
 
   // checks if the ref was provided or not & set it or just assign body.
   useEffect(() => {
