@@ -15,7 +15,7 @@ export const useScrollock = (
   let innerRef = useRef<HTMLElement>();
 
   const toggleScrollock = useCallback(
-    (value?: boolean) => setScrollock(value ? value : !scrollock),
+    (value?: boolean) => setScrollock(value ?? !scrollock),
     [scrollock]
   );
 
